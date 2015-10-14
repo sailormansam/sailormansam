@@ -1,11 +1,3 @@
-@font-face {
-	font-family: 'squada one';
-	src: url('../fonts/squadaone-regular.woff2') format('woff2'),
-		 url('../fonts/squadaone-regular.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-
 body {
 	background-color: #ffffff;
 	margin: 0;
@@ -14,7 +6,8 @@ body {
 
 h3 {
 	font-size: 2.5em;
-	margin: 2.5em 0;
+	margin: 0 0 1.25rem;
+	font-family: Lora;
 }
 
 p {
@@ -30,23 +23,57 @@ header img {
 	height: 10em;
 }
 
+.social {
+	display: inline-block;
+	width: 5em;
+	fill: #E8D5C7;
+	position: relative;
+	top: 0.7em;
+	left: 1.2em;
+	
+	transition: all 0.2s ease;
+}
+
+.social:hover {
+	fill: #45565e;
+}
+
 main {
 	margin: 0 5em;
 }
 
 article {
 	color: #333333;
-	overflow: hidden;
+	display: flex;
+	flex-flow: row wrap
 }
 
 article img {
-	float: left;
-	margin-right: 2.5em;
+	order: 1;
 }
 
 .copy {
-	float: left;
-	max-width: 30em;
+	order: 2;
+	width: 40em;
+	position: relative;
+}
+
+blockquote {
+	font-family: Lora;
+	line-height: 1.5;
+	font-size: 1.5em;
+	margin: 0 0 0 5em;
+}
+
+blockquote:before {
+	content: '\201C';
+	position: absolute;
+	left: 0.4em;
+	top: -0.3em;
+	font-size: 5.5em;
+	font-family: Lora;
+	color: #EA6D11;
+	font-weight: bold;
 }
 
 footer {
