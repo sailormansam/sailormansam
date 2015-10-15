@@ -20,10 +20,15 @@ header {
 }
 
 header img {
-	height: 10em;
+	max-width: 600px;
+	width: 100%;
 }
 
 .social {
+	display: inline-block;
+}
+
+.social a {
 	display: inline-block;
 	width: 5em;
 	fill: #E8D5C7;
@@ -34,7 +39,7 @@ header img {
 	transition: all 0.2s ease;
 }
 
-.social:hover {
+.social a:hover {
 	fill: #45565e;
 }
 
@@ -45,16 +50,36 @@ main {
 article {
 	color: #333333;
 	display: flex;
-	flex-flow: row wrap
+	flex-flow: row;
+	align-items: stretch;
+	padding-bottom: 10em;
+	position: relative;
 }
 
 article img {
-	order: 1;
+	margin-right: 2.5em;
+	margin-bottom: 2.5em;
+	max-width: 685px;
+	width: 100%;
+	height: 100%;
+}
+
+article:after {
+	display: block;
+	content: "";
+	width: 7em;
+	height: 8em;
+	background-image: url(../images/stop.svg);
+	position: absolute;
+	left: 50%;
+	margin-left: -3.5em;
+	bottom: 0;
+	background-size: 100%;
+	background-repeat: no-repeat;
 }
 
 .copy {
-	order: 2;
-	width: 40em;
+	max-width: 40em;
 	position: relative;
 }
 
@@ -62,13 +87,13 @@ blockquote {
 	font-family: Lora;
 	line-height: 1.5;
 	font-size: 1.5em;
-	margin: 0 0 0 5em;
+	margin: 0 0 0 3.3em;
 }
 
 blockquote:before {
 	content: '\201C';
 	position: absolute;
-	left: 0.4em;
+	left: 0;
 	top: -0.3em;
 	font-size: 5.5em;
 	font-family: Lora;
@@ -78,4 +103,82 @@ blockquote:before {
 
 footer {
 	margin: 5em 0;
+}
+
+@media all and (max-width: 82em) {
+	header {
+		text-align: center;
+		margin-right: 2em;
+		margin-left: 2em;
+	}
+	
+	main {
+		margin: 0 2em;
+	}
+	
+	.social {
+		display: flex;
+		justify-content: center;
+	}
+	
+	.social a {
+		left: 0;
+	}
+	
+	article {
+		flex-flow: row wrap;
+		justify-content: center;
+	}
+	
+	article img {
+		margin-right: 0;
+	}
+}
+
+@media all and (max-width: 42em) {
+	blockquote {
+		font-size: 1.2em;
+	}
+	
+	article {
+		padding-bottom: 8em;
+	}
+	
+	article:after {
+		width: 4em;
+		height: 4em;
+		margin-left: -2em;
+	}
+}
+
+@media all and (max-width: 25em) {
+	header {
+		margin-right: 1em;
+		margin-left: 1em;
+	}
+	
+	main {
+		margin: 0 1em;
+	}
+	
+	blockquote {
+		margin-left: 0;
+		font-size: 1.1em;
+	}
+	
+	blockquote:before {
+		content: "";
+	}
+	
+	article img {
+		margin-bottom: 1em;
+	}
+	
+	.social a {
+		width: 4em;
+	}
+	
+	article {
+		padding-bottom: 6em;
+	}
 }
