@@ -16,7 +16,7 @@ p {
 }
 
 header {
-	margin: 5em 5em;
+	margin: 5em 5em 7em;
 }
 
 header img {
@@ -52,8 +52,17 @@ article {
 	display: flex;
 	flex-flow: row;
 	align-items: stretch;
-	padding-bottom: 10em;
+	padding-bottom: 20em;
 	position: relative;
+}
+
+.comic {
+	padding-top: 100%;
+}
+
+#renderedComic {
+	display: none;
+	margin-bottom: 0;
 }
 
 article img {
@@ -73,7 +82,7 @@ article:after {
 	position: absolute;
 	left: 50%;
 	margin-left: -3.5em;
-	bottom: 0;
+	bottom: 6.5em;
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
@@ -105,11 +114,16 @@ footer {
 	margin: 5em 0;
 }
 
+canvas {
+	display: none;
+}
+
 @media all and (max-width: 82em) {
 	header {
 		text-align: center;
 		margin-right: 2em;
 		margin-left: 2em;
+		margin-bottom: 5em;
 	}
 	
 	main {
@@ -149,12 +163,17 @@ footer {
 		height: 4em;
 		margin-left: -2em;
 	}
+	
+	article:after {
+		bottom: 2em;
+	}
 }
 
 @media all and (max-width: 25em) {
 	header {
 		margin-right: 1em;
 		margin-left: 1em;
+		margin-bottom: 3em;
 	}
 	
 	main {
@@ -180,5 +199,9 @@ footer {
 	
 	article {
 		padding-bottom: 6em;
+	}
+	
+	article:after {
+		bottom: 1em;
 	}
 }
