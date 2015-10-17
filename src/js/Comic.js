@@ -24,6 +24,11 @@ Comic.prototype = {
 	drawPanels: function (column) {
 		// loop through comic panels and have them draw when they're loaded
 		var counter = 0;
+		this.loadedCounter = 0;
+		
+		this.ctx.fillStyle = "#ffffff";
+		this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+		
 		for(var i = 0, len = this.panels.length / 2; i < len; i++) {
 			for(var j = 0, len = this.panels.length / 2; j < len; j++) {
 				var img = new Image();
@@ -71,7 +76,7 @@ Comic.prototype = {
 			var dataURL = canvas.toDataURL();
 			document.getElementById('renderedComic').src = dataURL;
 			document.getElementById('renderedComic').style.display = 'block';
-			
+
 			// get rid of padding used for dead space
 			cont.style.paddingTop = 0;
 		}
