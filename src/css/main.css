@@ -17,6 +17,7 @@ p {
 
 header {
 	margin: 5em 5em 7em;
+	text-align: center;
 }
 
 header img {
@@ -25,7 +26,8 @@ header img {
 }
 
 .social {
-	display: inline-block;
+	display: flex;
+	justify-content: center;
 }
 
 .social a {
@@ -34,7 +36,6 @@ header img {
 	fill: #E8D5C7;
 	position: relative;
 	top: 0.7em;
-	left: 1.2em;
 	
 	transition: all 0.2s ease;
 }
@@ -44,16 +45,20 @@ header img {
 }
 
 main {
-	margin: 0 5em;
+	max-width: 46em;
+	width: 100%;
+	margin: 0 auto;
+	padding-left: 2em;
+	padding-right: 2em;
+	box-sizing: border-box;
 }
 
 article {
 	color: #333333;
-	display: flex;
-	flex-flow: row;
-	align-items: stretch;
+	display: block;
 	padding-bottom: 20em;
 	position: relative;
+	margin: 0 auto;
 }
 
 .comic {
@@ -66,7 +71,6 @@ article {
 }
 
 article img {
-	margin-right: 2.5em;
 	margin-bottom: 2.5em;
 	max-width: 685px;
 	width: 100%;
@@ -118,37 +122,6 @@ canvas {
 	display: none;
 }
 
-@media all and (max-width: 82em) {
-	header {
-		text-align: center;
-		margin-right: 2em;
-		margin-left: 2em;
-		margin-bottom: 5em;
-	}
-	
-	main {
-		margin: 0 2em;
-	}
-	
-	.social {
-		display: flex;
-		justify-content: center;
-	}
-	
-	.social a {
-		left: 0;
-	}
-	
-	article {
-		flex-flow: row wrap;
-		justify-content: center;
-	}
-	
-	article img {
-		margin-right: 0;
-	}
-}
-
 @media all and (max-width: 42em) {
 	blockquote {
 		font-size: 1.2em;
@@ -177,7 +150,8 @@ canvas {
 	}
 	
 	main {
-		margin: 0 1em;
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 	
 	blockquote {

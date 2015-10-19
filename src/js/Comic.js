@@ -51,15 +51,15 @@ Comic.prototype = {
 	},
 
 	resize: function () {
-		if(this.container.clientWidth <= 685) {
+		if(this.container.clientWidth < 672) {
 			this.canvas.width = this.container.clientWidth;
 			this.canvas.height = this.container.clientWidth * 4;
 			
 			this.drawPanels(true);
 		}
 		else {
-			this.canvas.width = 685;
-			this.canvas.height = 685;
+			this.canvas.width = 672;
+			this.canvas.height = 672;
 			
 			this.drawPanels();
 		}
