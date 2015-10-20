@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 	del = require('del');
 
 gulp.task('default', ['del'], function () {
-	gulp.start('minify-js', 'minify-css', 'imagemin', 'html-replace', 'copy', 'copy-fonts');
+	gulp.start('minify-js', 'minify-css', 'imagemin', 'html-replace', 'copy-icon');
 });
 
 gulp.task('del', function (cb) {
@@ -44,12 +44,7 @@ gulp.task('imagemin', function () {
 		.pipe(gulp.dest('dist/images'));
 });
 
-gulp.task('copy', function () {
-	return gulp.src('src/phaser.min.js')
+gulp.task('copy-icon', function () {
+	return gulp.src('src/favicon.ico')
 		.pipe(copy('dist', { prefix: 1 }));
-});
-
-gulp.task('copy-fonts', function() {
-   return gulp.src('src/fonts/**')
-    .pipe(copy('dist', { prefix: 1 }));
 });
