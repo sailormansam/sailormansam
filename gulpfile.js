@@ -6,10 +6,15 @@ var gulp = require('gulp'),
 	imagemin = require('gulp-imagemin'),
 	htmlreplace = require('gulp-html-replace'),
 	copy = require('gulp-copy'),
+	webserver = require('gulp-webserver'),
 	del = require('del');
 
 gulp.task('default', ['del'], function () {
 	gulp.start('minify-js', 'minify-css', 'imagemin', 'html-replace', 'copy-icon');
+});
+
+gulp.task('dev', function () {
+	gulp.start('webserver');
 });
 
 gulp.task('del', function (cb) {
@@ -47,4 +52,12 @@ gulp.task('imagemin', function () {
 gulp.task('copy-icon', function () {
 	return gulp.src('src/favicon.ico')
 		.pipe(copy('dist', { prefix: 1 }));
+});
+
+gulp.task('webserver', function() {
+	gulp.src('src/')
+		.pipe(webserver({
+			livereload: true,
+			open: true
+		}));
 });

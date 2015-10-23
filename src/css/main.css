@@ -131,6 +131,12 @@ canvas {
 }
 
 @media all and (max-width: 42em) {
+	header {
+		margin-right: 2em;
+		margin-left: 2em;
+		margin-bottom: 4em;
+	}
+	
 	blockquote {
 		font-size: 1.2em;
 	}
