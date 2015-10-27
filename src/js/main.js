@@ -1,10 +1,18 @@
-var alone;
-
-window.onload = function () {
-	//alone = new Comic();
-}
-
-// resize the canvas
-window.onresize = function () {
-	//alone.resize();
-}
+(function(){
+	var app = angular.module('comic', []);
+	
+	app.controller('ComicController', function () {
+		this.comics = comics;
+	});
+	
+	var comics = [
+		{
+			image: "images/test.jpg",
+			description: "test 1"
+		},
+		{
+			image: "images/test.jpg",
+			description: "test 2"
+		}
+	];
+})();
