@@ -49,11 +49,12 @@
 			</div>
 		</header>
 		<main ng-controller="ComicController as comics">
-			<article ng-repeat="comic in comics.comics">
+			<article ng-attr-id="{{ comic.id }}" ng-repeat="comic in comics.comics">
 				<img ng-src="{{ comic.image }}" alt="test">
 				<div class="block"></div>
 				<div class="copy">
 					<blockquote>{{ comic.description }}</blockquote>
+					<a class="tag" ng-href="{{ '#' + comic.id}}">#</a>
 				</div>
 			</article>
 		</main>

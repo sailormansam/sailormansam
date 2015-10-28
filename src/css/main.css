@@ -16,7 +16,7 @@ p {
 }
 
 header {
-	margin: 5em 5em 7em;
+	margin: 5em 5em 2em;
 	text-align: center;
 }
 
@@ -44,6 +44,24 @@ header img {
 	fill: #45565e;
 }
 
+.tag {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 1.3em;
+	font-size: 3em;
+	font-family: Lora;
+	text-decoration: none;
+	color: #E8D5C7;
+	font-weight: bold;
+	
+	transition: all 0.2s ease;
+}
+
+.tag:hover {
+	color: #45565e;
+}
+
 main {
 	max-width: 46em;
 	width: 100%;
@@ -56,7 +74,8 @@ main {
 article {
 	color: #333333;
 	display: block;
-	padding-bottom: 20em;
+	padding-top: 5em;
+	padding-bottom: 15em;
 	position: relative;
 	margin: 0 auto;
 }
@@ -87,7 +106,7 @@ article:after {
 	position: absolute;
 	left: 50%;
 	margin-left: -3.5em;
-	bottom: 6.5em;
+	bottom: 1.5em;
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
