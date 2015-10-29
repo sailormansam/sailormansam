@@ -1,20 +1,15 @@
 (function(){
 	var app = angular.module('comic', []);
 	
-	app.controller('ComicController', function () {
-		this.comics = comics;
+	app.controller('PanelController', function ($http) {
+		var com = this;
+		
+		$http.get('/data.json').
+			success(function(data) {
+				com.comics = data.panels;
+			}).
+			error(function() {
+				console.log('error');
+			});
 	});
-	
-	var comics = [
-		{
-			id: "test1",
-			image: "images/test.jpg",
-			description: "test 1"
-		},
-		{
-			id: "test2",
-			image: "images/test.jpg",
-			description: "test 2"
-		}
-	];
 })();
