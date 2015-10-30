@@ -153,7 +153,7 @@ canvas {
 	header {
 		margin-right: 2em;
 		margin-left: 2em;
-		margin-bottom: 4em;
+		margin-bottom: 1em;
 	}
 	
 	blockquote {
@@ -179,7 +179,7 @@ canvas {
 	header {
 		margin-right: 1em;
 		margin-left: 1em;
-		margin-bottom: 3em;
+		margin-bottom: 0;
 	}
 	
 	main {
