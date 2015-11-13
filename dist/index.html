@@ -45,12 +45,11 @@
 			</div>
 		</header>
 		<main ng-controller="PanelController as panels">
-			<article ng-attr-id="{{ comic.id }}" ng-repeat="comic in panels.comics">
+			<article ng-attr-id="{{ comic.id }}" ng-repeat="comic in panels.comics" end-directive>
 				<img ng-src="{{ comic.image }}" alt="test">
 				<div class="block"></div>
 				<div class="copy">
 					<blockquote>{{ comic.description }}</blockquote>
-					<a class="tag" ng-href="{{ '#' + comic.id}}">#</a>
 				</div>
 			</article>
 		</main>
