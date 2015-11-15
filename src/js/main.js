@@ -16,9 +16,9 @@
 	app.directive('endDirective', function ($location, $anchorScroll) {
 		return function(scope, element, attrs) {
 			if (scope.$last){
-				if(window.location.hash) {
-					// scroll to hash location, current method not working 100%;
-				}
+				var hash = window.location.hash;
+				$location.hash(hash.substr(2, hash.length));
+				$anchorScroll();
 			}
 		};
 	});
@@ -36,7 +36,7 @@
 		var comic;
 
 		for( var i = 0, len = comics.length; i < len; i++) {
-			if(document.body.scrollTop > comics[i].offsetTop) {
+			if(document.body.scrollTop >= comics[i].offsetTop) {
 				comic = comics[i];
 				hashId = comics[i].id;
 			}
