@@ -27,7 +27,7 @@ header {
 }
 
 header img {
-	max-width: 600px;
+	max-width: 37em;
 	width: 100%;
 }
 
@@ -99,7 +99,7 @@ article {
 }
 
 article img {
-	max-width: 685px;
+	max-width: 42em;
 	width: 100%;
 	height: auto;
 	position: absolute;
