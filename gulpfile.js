@@ -7,7 +7,8 @@ var gulp = require('gulp'),
 	htmlreplace = require('gulp-html-replace'),
 	copy = require('gulp-copy'),
 	webserver = require('gulp-webserver'),
-	del = require('del');
+	del = require('del'),
+	ghPages = require('gulp-gh-pages');
 
 gulp.task('default', ['del'], function () {
 	gulp.start('minify-js', 'minify-css', 'imagemin', 'html-replace', 'copy-icon');
@@ -15,6 +16,11 @@ gulp.task('default', ['del'], function () {
 
 gulp.task('dev', function () {
 	gulp.start('webserver');
+});
+
+gulp.task('deploy', function() {
+	return gulp.src('./dist/**/*')
+		.pipe(ghPages({remoteUrl: 'https://github.com/sailormansam/sailormansam.git', branch: 'deploy'}));
 });
 
 gulp.task('del', function (cb) {
