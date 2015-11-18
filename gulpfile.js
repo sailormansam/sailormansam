@@ -28,13 +28,13 @@ gulp.task('del', function (cb) {
 });
 
 gulp.task('html-replace', function () {
-	return gulp.src('src/index.html')
+	return gulp.src('index.html')
 		.pipe(htmlreplace({ js: 'js/main.min.js', css: 'css/main.min.css' }))
 		.pipe(gulp.dest('dist'));
 });
 
 gulp.task('minify-js', function () {
-	return gulp.src('src/js/*.js')
+	return gulp.src('js/*.js')
 		.pipe(concat('main.js'))
 		.pipe(uglify())
 		.pipe(rename({suffix: '.min'}))
@@ -42,7 +42,7 @@ gulp.task('minify-js', function () {
 });
 
 gulp.task('minify-css', function () {
-	return gulp.src('src/css/*.css')
+	return gulp.src('css/*.css')
 		.pipe(concat('main.css'))
 		.pipe(minifycss())
 		.pipe(rename({suffix: '.min'}))
@@ -50,18 +50,18 @@ gulp.task('minify-css', function () {
 });
 
 gulp.task('imagemin', function () {
-	return gulp.src('src/images/*')
+	return gulp.src('images/*')
 		.pipe(imagemin({progressive: true}))
 		.pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('copy-icon', function () {
-	return gulp.src('src/favicon.ico')
+	return gulp.src('favicon.ico')
 		.pipe(copy('dist', { prefix: 1 }));
 });
 
 gulp.task('webserver', function() {
-	gulp.src('src/')
+	gulp.src('/')
 		.pipe(webserver({
 			livereload: true,
 			open: true
