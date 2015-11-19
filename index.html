@@ -47,7 +47,7 @@
 				<img ng-src="{{ comic.image }}" alt="test">
 				<div class="block"></div>
 				<div class="copy" id="test">
-					<blockquote>{{ comic.description }}</blockquote>
+					<blockquote ng-bind-html="descriptionHtml"></blockquote>
 				</div>
 			</article>
 		</main>
