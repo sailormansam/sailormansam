@@ -13,8 +13,10 @@
 			});
 	});
 	
-	app.directive('endDirective', function ($location, $anchorScroll) {
+	app.directive('endDirective', function ($location, $anchorScroll, $sce) {
 		return function(scope, element, attrs) {
+			// render out description with html
+			scope.descriptionHtml = $sce.trustAsHtml(scope.comic.description);
 			if (scope.$last){
 				var hash = window.location.hash;
 				$location.hash(hash.substr(2, hash.length));
