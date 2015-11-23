@@ -27,24 +27,37 @@
 })();
 
 (function(){
-	window.onscroll = function () {
-		var comics = document.getElementsByTagName('article');
+	var ready = true;
+	
+	function throttle () {
+		if (ready) {
+			var comics = document.getElementsByTagName('article');
 
-		// get elements that we have scrolled past but only take the most
-		// recent one we passed and set that id as the hash
-		// make sure this code doesn't affect going to a url with a hash already
+			// get elements that we have scrolled past but only take the most
+			// recent one we passed and set that id as the hash
+			// make sure this code doesn't affect going to a url with a hash already
 
-		var hashId = "";
-		var comic;
+			var hashId = "";
+			var comic;
 
-		for( var i = 0, len = comics.length; i < len; i++) {
-			if(document.body.scrollTop >= comics[i].offsetTop) {
-				comic = comics[i];
-				hashId = comics[i].id;
+			for( var i = 0, len = comics.length; i < len; i++) {
+				if(document.body.scrollTop >= comics[i].offsetTop) {
+					comic = comics[i];
+					hashId = comics[i].id;
+				}
 			}
-		}
 
-		// make sure this works on most devices
-		history.replaceState(null, null, "#" + hashId);
+			// make sure this works on most devices
+			history.replaceState(null, null, "#" + hashId);
+			
+			ready = false;
+			
+			window.setTimeout(function () {
+				ready = true;
+			}, 500);
+		}
+		
 	}
+	
+	window.onscroll = throttle;
 })();
