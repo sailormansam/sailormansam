@@ -1,7 +1,7 @@
 (function (){
 	var app = angular.module('comic', []);
 	
-	app.controller('PanelController', function ($http) {
+	app.controller('PanelController', function ($scope, $http, $location) {
 		var com = this;
 		
 		$http.get('/data.json').
@@ -11,6 +11,34 @@
 			error(function () {
 				console.log('error');
 			});
+		
+		
+		// get comics
+		var comics = document.getElementsByTagName('article');
+
+		// frame loop
+		function step() {
+			var hashId = "";
+
+			for( var i = 0, len = comics.length; i < len; i++) {
+				if(document.body.scrollTop >= comics[i].offsetTop) {
+					hashId = comics[i].id;
+				}
+			}
+
+			// make sure this works on most devices
+//			console.log(hashId);
+//			$location.hash(hashId);
+			var hash = window.location.hash;
+			var hashCompare = hash.substr(1, hash.length);
+			if (hashId != hashCompare) {
+				history.replaceState(null, null, "#" + hashId);
+			}
+
+			window.requestAnimationFrame(step);
+		}
+
+		window.requestAnimationFrame(step);
 	});
 	
 	app.directive('endDirective', function ($location, $anchorScroll, $sce) {
@@ -27,37 +55,4 @@
 })();
 
 (function(){
-	var ready = true;
-	
-	function throttle () {
-		if (ready) {
-			var comics = document.getElementsByTagName('article');
-
-			// get elements that we have scrolled past but only take the most
-			// recent one we passed and set that id as the hash
-			// make sure this code doesn't affect going to a url with a hash already
-
-			var hashId = "";
-			var comic;
-
-			for( var i = 0, len = comics.length; i < len; i++) {
-				if(document.body.scrollTop >= comics[i].offsetTop) {
-					comic = comics[i];
-					hashId = comics[i].id;
-				}
-			}
-
-			// make sure this works on most devices
-			history.replaceState(null, null, "#" + hashId);
-			
-			ready = false;
-			
-			window.setTimeout(function () {
-				ready = true;
-			}, 500);
-		}
-		
-	}
-	
-	window.onscroll = throttle;
 })();
