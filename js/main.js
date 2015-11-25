@@ -32,10 +32,17 @@
 			var hash = window.location.hash;
 			var hashCompare = hash.substr(1, hash.length);
 			if (hashId != hashCompare) {
-				history.replaceState(null, null, "#" + hashId);
+//				$location.path(hashId);
+				path(hashId);
+//				history.replaceState(null, null, "#" + hashId);
 			}
 
 			window.requestAnimationFrame(step);
+		}
+		
+		function path(pather) {
+			$location.path(pather);
+			$scope.$apply();
 		}
 
 		window.requestAnimationFrame(step);
