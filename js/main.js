@@ -1,12 +1,15 @@
 (function (){
 	var app = angular.module('comic', []);
+	var started = false;
 	
-	app.controller('PanelController', function ($scope, $http, $location) {
+	app.controller('PanelController', function ($scope, $http) {
 		var com = this;
+		var scrolling = false;
 		
 		$http.get('/data.json').
 			success(function (data) {
 				com.comics = data.panels;
+				console.log('load');
 			}).
 			error(function () {
 				console.log('error');
@@ -18,48 +21,39 @@
 
 		// frame loop
 		function step() {
-			var hashId = "";
+			if(started) {
+				
+				var hashId = "";
 
-			for( var i = 0, len = comics.length; i < len; i++) {
-				if(document.body.scrollTop >= comics[i].offsetTop) {
-					hashId = comics[i].id;
+				for( var i = 0, len = comics.length; i < len; i++) {
+					if(document.body.scrollTop >= comics[i].offsetTop) {
+						hashId = comics[i].id;
+					}
 				}
+
+				// make sure this works on most devices
+				var hash = window.location.hash;
+				var hashCompare = hash.substr(1, hash.length);
+				if (hashId != hashCompare) {
+					history.replaceState(null, null, "#" + hashId);
+				}
+
+				window.requestAnimationFrame(step);
 			}
-
-			// make sure this works on most devices
-//			console.log(hashId);
-//			$location.hash(hashId);
-			var hash = window.location.hash;
-			var hashCompare = hash.substr(1, hash.length);
-			if (hashId != hashCompare) {
-//				$location.path(hashId);
-				path(hashId);
-//				history.replaceState(null, null, "#" + hashId);
-			}
-
-			window.requestAnimationFrame(step);
 		}
-		
-		function path(pather) {
-			$location.path(pather);
-			$scope.$apply();
-		}
+//		window.requestAnimationFrame(step);
 
-		window.requestAnimationFrame(step);
 	});
 	
-	app.directive('endDirective', function ($location, $anchorScroll, $sce) {
+	app.directive('endDirective', function ($sce, $timeout) {
 		return function(scope, element, attrs) {
 			// render out description with html
 			scope.descriptionHtml = $sce.trustAsHtml(scope.comic.description);
+			
 			if (scope.$last){
-				var hash = window.location.hash;
-				$location.hash(hash.substr(2, hash.length));
-				$anchorScroll();
+//				$anchorScroll();
+//				$timeout((function(){ window.location.hash = window.location.hash.toString(); console.log('hi')}), 200);
 			}
 		};
 	});
-})();
-
-(function(){
 })();
