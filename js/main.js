@@ -38,6 +38,8 @@
 				// make sure this works on most devices
 				var hash = window.location.hash;
 				var hashCompare = hash.substr(1, hash.length);
+				
+				// this will occasionaly cause jank
 				if (hashId != hashCompare) {
 					history.replaceState(null, null, "#" + hashId);
 				}
@@ -51,7 +53,7 @@
 
 	});
 	
-	app.directive('endDirective', function ($sce, $location, $anchorScroll) {
+	app.directive('endDirective', function ($sce, $location, $anchorScroll, $timeout) {
 		return function(scope, element, attrs) {
 			// render out description with html
 			scope.descriptionHtml = $sce.trustAsHtml(scope.comic.description);
@@ -63,7 +65,9 @@
 				$location.hash('');
 				$location.hash(hash.substr(1, hash.length));
 				$anchorScroll();
-				started = true;
+				
+				// set a timeout for hash updater or it will update before page can jump
+				$timeout(function(){started = true;}, 500);
 			}
 		};
 	});
