@@ -45,14 +45,15 @@
 
 	});
 	
-	app.directive('endDirective', function ($sce, $timeout) {
+	app.directive('endDirective', function ($sce, $location, $anchorScroll) {
 		return function(scope, element, attrs) {
 			// render out description with html
 			scope.descriptionHtml = $sce.trustAsHtml(scope.comic.description);
 			
 			if (scope.$last){
-//				$anchorScroll();
-//				$timeout((function(){ window.location.hash = window.location.hash.toString(); console.log('hi')}), 200);
+				console.log(window.location.hash);
+				$location.path(window.location.hash);
+				$anchorScroll();
 			}
 		};
 	});
