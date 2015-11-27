@@ -25,8 +25,20 @@
 
 		// frame loop
 		function step() {
-			if(started) {
-				
+			// this checks if the page has jumped to a hash location yet
+			var hash = window.location.hash;
+			hash.substr(1, hash.length)
+			var target = document.getElementById(hash);
+			
+			// check to see if the scroll of the page equals where we want to scroll to yet
+			// if not we can't update the hash based on where we are on the page or we will
+			// overwrite what's there
+			var check = -1;
+			if(target) {
+				check = target.offsetTop;
+			}
+			
+			if(started && document.body.scrollTop == check) {
 				var hashId = "";
 
 				for( var i = 0, len = comics.length; i < len; i++) {
@@ -65,9 +77,7 @@
 				$location.hash('');
 				$location.hash(hash.substr(1, hash.length));
 				$anchorScroll();
-				
-				// set a timeout for hash updater or it will update before page can jump
-				$timeout(function(){started = true;}, 500);
+				started = true;
 			}
 		};
 	});
