@@ -34,11 +34,15 @@
 			// if not we can't update the hash based on where we are on the page or we will
 			// overwrite what's there
 			var check = -1;
-			if(target) {
+			if(target && window.location.hash) {
 				check = target.offsetTop;
 			}
+			else if (!window.location.hash) {
+				check = 0;
+			}
 			
-			if(started && document.body.scrollTop == check) {
+			if( started || document.body.scrollTop == check) {
+				started = true;
 				var hashId = "";
 
 				for( var i = 0, len = comics.length; i < len; i++) {
@@ -77,7 +81,6 @@
 				$location.hash('');
 				$location.hash(hash.substr(1, hash.length));
 				$anchorScroll();
-				started = true;
 			}
 		};
 	});
