@@ -27,7 +27,7 @@
 		function step() {
 			// this checks if the page has jumped to a hash location yet
 			var hash = window.location.hash;
-			hash.substr(1, hash.length)
+			hash = hash.substr(1, hash.length);
 			var target = document.getElementById(hash);
 			
 			// check to see if the scroll of the page equals where we want to scroll to yet
