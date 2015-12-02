@@ -35,7 +35,7 @@
 	</head>
 	<base href="/">
 	<body>
-		<header>
+		<header class="wrapper">
 			<img src="images/sailormansam.svg" alt="Sailor Man Sam">
 			<div class="social">
 				<a href="//instagram.com/sailormansam/" target="_blank">
@@ -50,7 +50,7 @@
 				</a>
 			</div>
 		</header>
-		<main ng-controller="PanelController as panels">
+		<main class="wrapper" ng-controller="PanelController as panels">
 			<article ng-attr-id="{{ comic.id }}" ng-repeat="comic in panels.comics" end-directive>
 				<img ng-src="{{ comic.image }}" alt="test">
 				<div class="block"></div>
