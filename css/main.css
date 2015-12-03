@@ -20,7 +20,7 @@ p {
 
 .wrapper {
 	max-width: 46em;
-	width: 100%;
+	width: 80vmin;
 	margin: 0 auto;
 	padding-left: 2em;
 	padding-right: 2em;
@@ -46,6 +46,7 @@ header img {
 .social {
 	display: flex;
 	justify-content: center;
+	padding-top: 1em;
 }
 
 .social a {
@@ -53,7 +54,6 @@ header img {
 	width: 5em;
 	fill: #E8D5C7;
 	position: relative;
-	top: 0.7em;
 	
 	transition: all 0.2s ease;
 }
@@ -152,6 +152,10 @@ footer {
 \* --------------------------------------------------- */
 
 @media all and (max-width: 42em) {
+	.wrapper {
+		width: 100vmin;
+	}
+	
 	header {
 		margin-right: 2em;
 		margin-left: 2em;
@@ -176,29 +180,23 @@ footer {
 
 @media all and (max-width: 35em) {
 	header {
-		margin-top: 2em;
+		padding-top: 2em;
 	}
 	
 	article {
-		padding-top: 1em;
+		padding-top: 1.5em;
 		padding-bottom: 7em;
 	}
 }
 
 @media all and (max-width: 25em) {
-	header {
-		margin-right: 1em;
-		margin-left: 1em;
-		margin-bottom: 0;
+	.wrapper {
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 	
 	.social a {
 		width: 4em;
-	}
-	
-	.wrapper {
-		padding-left: 1em;
-		padding-right: 1em;
 	}
 	
 	article {
