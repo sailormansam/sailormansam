@@ -32,7 +32,7 @@ gulp.task('html-replace', ['del'], function () {
 });
 
 gulp.task('minify-js', ['del'], function () {
-	return gulp.src('js/*.js')
+	return gulp.src('js/**/*')
 		.pipe(concat('main.js'))
 		.pipe(uglify({ mangle: false }))
 		.pipe(rename({suffix: '.min'}))
