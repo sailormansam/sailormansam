@@ -25,6 +25,7 @@ p {
 	padding-left: 2em;
 	padding-right: 2em;
 	box-sizing: border-box;
+	display: block;
 }
 
 
